@@ -12,7 +12,7 @@ module.exports = {
   resolves to an ARRAY with all users, each user having { user_id, username }
  */
 function find() {
-  return db('users').select('id', 'username')
+  return db('users').select('user_id', 'username')
 }
 
 /**
@@ -27,7 +27,8 @@ function findBy(filter) {
  */
 function findById(user_id) {
   return db('users')
-    .where({ id })
+    .select('user_id', 'username')
+    .where('user_id', user_id)
     .first()
 }
 
