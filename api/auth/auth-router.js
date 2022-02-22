@@ -39,7 +39,6 @@ router.post('/register', checkPasswordLength, checkUsernameFree, (req, res, next
   User.add({ username, password: hash })
     .then(saved => {
       res.status(201).json(saved)
-      res.json({ message: 'Password must be longer than 3 chars'})
     })
     .catch(next)
 })
